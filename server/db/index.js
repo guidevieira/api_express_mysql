@@ -37,7 +37,7 @@ chirpdb.create = (data) => {
 
 chirpdb.login = (data) => {
     return new Promise((resolve, reject) => {
-        pool.query("SELECT * FROM users WHERE ?",[data.name], (err, results) => {
+        pool.query("SELECT * FROM users WHERE email = ?",[data.name], (err, results) => {
             if(err){
                 return reject(err)
             }

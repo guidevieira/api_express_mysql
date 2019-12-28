@@ -15,7 +15,8 @@ router.get('/', async(req, res, next) => {
 
 router.post('/register', async(req, res, next) => {
     try{
-        res.json(req.body)
+        let results = await db.create(req.body)
+        res.json(results)
     }catch(e){
         console.log(e)
         res.sendStatus(500)

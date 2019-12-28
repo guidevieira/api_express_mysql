@@ -14,7 +14,7 @@ router.get('/', async(req, res, next) => {
 })
 
 router.post('/register', async(req, res, next) => {
-    console.log(req)
+    console.log(req.all())
 })
 
 module.exports = router

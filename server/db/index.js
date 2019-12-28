@@ -24,16 +24,13 @@ chirpdb.all = () => {
 }
 
 chirpdb.create = (data) => {
-    console.log('aki')
-    // return new Promise((resolve, reject) => {
-    //     pool.query('SELECT * FROM users', (err, results) => {
-    //         if(err){
-    //             return reject(err)
-    //         }
-
-    //         return resolve(results)
-    //     })
-    // })
+    console.log(data)
+    return new Promise((resolve, reject) => {
+        conn.query({
+            sql: 'INSERT into users (email, nome, senha) VALUES ?',
+            values: [data]
+        });
+    })
 }
 
 module.exports = chirpdb

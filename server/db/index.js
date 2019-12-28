@@ -24,7 +24,6 @@ chirpdb.all = () => {
 }
 
 chirpdb.create = (data) => {
-    console.log(data)
     return new Promise((resolve, reject) => {
         pool.query("INSERT into users SET ?",data, (err, results) => {
             if(err){
@@ -34,6 +33,10 @@ chirpdb.create = (data) => {
             return resolve(results)
         })
     })
+}
+
+chirpdb.login = (data) => {
+    console.log(data)
 }
 
 module.exports = chirpdb

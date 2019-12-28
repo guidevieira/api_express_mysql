@@ -36,7 +36,15 @@ chirpdb.create = (data) => {
 }
 
 chirpdb.login = (data) => {
-    console.log(data)
+    return new Promise((resolve, reject) => {
+        pool.query("SELECT * FROM users WHERE ?",[data.name], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            console.log(results)
+            return resolve(results)
+        })
+    })
 }
 
 module.exports = chirpdb

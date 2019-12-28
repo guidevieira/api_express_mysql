@@ -14,7 +14,12 @@ router.get('/', async(req, res, next) => {
 })
 
 router.post('/register', async(req, res, next) => {
-    console.log(req.body)
+    try{
+        res.json(req.body)
+    }catch(e){
+        console.log(e)
+        res.sendStatus(500)
+    }
 })
 
 module.exports = router

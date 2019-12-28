@@ -26,10 +26,13 @@ chirpdb.all = () => {
 chirpdb.create = (data) => {
     console.log(data)
     return new Promise((resolve, reject) => {
-        pool.query({
-            sql: 'INSERT into users (email, nome, senha) VALUES ?',
-            values: [data]
-        });
+        pool.query("INSERT into users (email, nome, senha) VALUES ('AudioWorklet', 'aki', 'aki')", (err, results) => {
+            if(err){
+                return reject(err)
+            }
+
+            return resolve(results)
+        })
     })
 }
 

@@ -48,7 +48,7 @@ chirpdb.login = (data) => {
             if(err){
                 return reject(err)
             }
-
+            console.log(results)
             if(results != []){
                 bcrypt.compare(data.senha, results.senha, function(err, res) {
                     if(res) {

@@ -54,12 +54,13 @@ chirpdb.login = (data) => {
                     if(res) {
                      // Passwords match
                      console.log('true')
+                     return resolve(results)
                     } else {
                      // Passwords don't match
                      console.log('false')
+                     return resolve({'erro': 'senha invalida'})
                     } 
                   });
-                return resolve(results)
             }else{
                 return resolve({ 'erro': 'usuario nao exixtes'})
             }

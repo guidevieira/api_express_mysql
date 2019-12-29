@@ -27,8 +27,8 @@ chirpdb.all = () => {
 
 chirpdb.create = (data) => {
     console.log(data.password)
-    bcrypt.hash(data.password, 10, function(err, hash) {
-        data.password = hash
+    bcrypt.hash(data.senha, 10, function(err, hash) {
+        data.senha = hash
       });
 
     return new Promise((resolve, reject) => {

@@ -48,9 +48,9 @@ chirpdb.login = (data) => {
             if(err){
                 return reject(err)
             }
-            console.log(results.RowDataPacket)
+            const { senha } = results
             if(results.length != 0 ){
-                console.log(data.senha, results.email)
+                console.log(data.senha, senha)
                 bcrypt.compare(data.senha, results.senha, function(err, res) {
                     if(res) {
                      // Passwords match

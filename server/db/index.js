@@ -1,3 +1,5 @@
+
+const bcrypt = require('bcrypt');
 const mysql = require('mysql')
 
 const pool = mysql.createPool({
@@ -24,6 +26,10 @@ chirpdb.all = () => {
 }
 
 chirpdb.create = (data) => {
+    bcrypt.hash(data.password, 10, function(err, hash) {
+        data.password = hash
+      });
+
     return new Promise((resolve, reject) => {
         pool.query("INSERT into users SET ?",data, (err, results) => {
             if(err){

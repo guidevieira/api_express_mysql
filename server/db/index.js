@@ -48,8 +48,21 @@ chirpdb.login = (data) => {
             if(err){
                 return reject(err)
             }
-            console.log(results)
-            return resolve(results)
+
+            if(results != []){
+                bcrypt.compare(results.senha, 10, function(err, res) {
+                    if(res) {
+                     // Passwords match
+                     console.log('true')
+                    } else {
+                     // Passwords don't match
+                     console.log('false')
+                    } 
+                  });
+                return resolve(results)
+            }else{
+                return resolve('usuario nao exixtes')
+            }
         })
     })
 }

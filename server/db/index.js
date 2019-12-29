@@ -61,7 +61,7 @@ chirpdb.login = (data) => {
                   });
                 return resolve(results)
             }else{
-                return resolve('usuario nao exixtes')
+                return resolve({ 'erro': 'usuario nao exixtes'})
             }
         })
     })

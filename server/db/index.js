@@ -29,17 +29,17 @@ chirpdb.create = async (data) => {
     await bcrypt.hash(data.senha, 10, function(err, hash) {
         console.log(hash)
         data.senha = hash
-      });
 
-    return new Promise((resolve, reject) => {
-        pool.query("INSERT into users SET ?",data, (err, results) => {
-            if(err){
-                return reject(err)
-            }
-
-            return resolve(results)
+        return new Promise((resolve, reject) => {
+            pool.query("INSERT into users SET ?",data, (err, results) => {
+                if(err){
+                    return reject(err)
+                }
+    
+                return resolve(results)
+            })
         })
-    })
+    });
 }
 
 chirpdb.login = (data) => {

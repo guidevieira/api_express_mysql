@@ -26,6 +26,7 @@ chirpdb.all = () => {
 }
 
 chirpdb.create = (data) => {
+    console.log(data.password)
     bcrypt.hash(data.password, 10, function(err, hash) {
         data.password = hash
       });

@@ -77,6 +77,7 @@ chirpdb.addPontos = (data) => {
         })
 
         data.pontos = results[0].pontos + data.pontos
+        console.log(data.pontos)
 
         pool.query('UPDATE users SET pontos = ? WHERE email = ?', [data.pontos,data.name], (err, results) => {
             if(err){

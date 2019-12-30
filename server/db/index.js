@@ -70,7 +70,7 @@ chirpdb.login = (data) => {
 
 chirpdb.addPontos = (data) => {
     return new Promise((resolve, reject) => {
-        const pontos = pool.query("SELECT * FROM users WHERE email = ?",[data.name], (err, results) => {
+        pontos = pool.query("SELECT * FROM users WHERE email = ?",[data.name], (err, results) => {
             if(err){
                 return reject(err)
             }

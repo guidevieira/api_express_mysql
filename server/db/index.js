@@ -74,6 +74,7 @@ chirpdb.addPontos = (data) => {
             if(err){
                 return reject(err)
             }
+            return({'ok': 'ok'})
         })
     })
 }

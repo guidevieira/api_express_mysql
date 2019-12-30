@@ -33,4 +33,14 @@ router.post('/login', async(req, res, next) => {
     }
 })
 
+router.post('/addpontos', async(req, res, next) => {
+    try{
+        let results = await db.addPontos(req.body)
+        res.json({ok: results})
+    }catch(e){
+        console.log(e)
+        res.sendStatus(500)
+    }
+})
+
 module.exports = router

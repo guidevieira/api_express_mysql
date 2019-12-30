@@ -68,4 +68,14 @@ chirpdb.login = (data) => {
     })
 }
 
+chirpdb.addPontos = (data) => {
+    return new Promise((resolve, reject) => {
+        pool.query('UPDATE users SET pontos = ? WHERE UserID = ?', [data.pontos,data.name], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+        })
+    })
+}
+
 module.exports = chirpdb

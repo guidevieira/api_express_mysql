@@ -70,6 +70,13 @@ chirpdb.login = (data) => {
 
 chirpdb.addPontos = (data) => {
     return new Promise((resolve, reject) => {
+        pool.query("SELECT * FROM users WHERE email = ?",[data.name], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            console.log(results.pontos)
+        })
+
         pool.query('UPDATE users SET pontos = ? WHERE email = ?', [data.pontos,data.name], (err, results) => {
             if(err){
                 return reject(err)

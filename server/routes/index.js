@@ -43,4 +43,14 @@ router.post('/addpontos', async(req, res, next) => {
     }
 })
 
+router.post('/retirada', async(req, res, next) => {
+    try{
+        let results = await db.retirada(req.body)
+        res.json({ok: results})
+    }catch(e){
+        console.log(e)
+        res.sendStatus(500)
+    }
+})
+
 module.exports = router

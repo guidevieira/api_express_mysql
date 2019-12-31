@@ -86,4 +86,25 @@ chirpdb.addPontos = (data) => {
     })
 }
 
+chirpdb.retirada = (data) => {
+    console.log(data)
+    return 1
+
+    return new Promise((resolve, reject) => {
+        pontos = pool.query("SELECT * FROM users WHERE email = ?",[data.name], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            data.pontos = results[0].pontos + data.pontos
+    
+            pool.query('UPDATE users SET pontos = ? WHERE email = ?', [data.pontos,data.name], (err, results) => {
+                if(err){
+                    return reject(err)
+                }
+                return({'ok': 'ok'})
+            })
+        })
+    })
+}
+
 module.exports = chirpdb

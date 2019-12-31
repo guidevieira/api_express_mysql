@@ -91,7 +91,7 @@ chirpdb.retirada = (data) => {
         colection = {}
         colection.user = data.user
         colection.img_url = data.img_url
-        colection.data.status = data.status
+        colection.status = data.status
         pool.query("INSERT into retiradas SET ?",colection, (err, results) => {
             if(err){
                 return reject(err)

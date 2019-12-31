@@ -88,9 +88,8 @@ chirpdb.addPontos = (data) => {
 
 chirpdb.retirada = (data) => {
     return new Promise((resolve, reject) => {
-        console.log(data)
-        var dados = {user: data.user, img_url: data.img_url, status: data.status}
-        pool.query("INSERT into retiradas SET ?",dados, (err, results) => {
+        pool.query("INSERT INTO retiradas(user, img_url, status) VALUES (?, ?, ?)", 
+        [data.user, data.img_url, data.status], (err, results) => {
             if(err){
                 return reject(err)
             }
